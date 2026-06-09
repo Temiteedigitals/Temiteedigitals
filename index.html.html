@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alimi Henry Temitope — Digital Growth Strategist & Web Developer | temitee</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    /* ── Variables ── */
+    :root {
+      --primary: #4169E1;
+      --secondary: #8B7D57;
+      --text-dark: #1a1a1a;
+      --text-light: #666666;
+      --bg-light: #f9f9f9;
+      --bg-white: #ffffff;
+      --border: #e0e0e0;
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 60px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      background-color: var(--bg-white);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Page Routing ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: var(--spacing-md) var(--spacing-sm);
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      gap: var(--spacing-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active { color: var(--primary); }
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--spacing-xs);
+    }
+
+    .nav-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(10px, 10px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+    .nav-menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 74px;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-white);
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+      gap: var(--spacing-sm);
+    }
+
+    @media (min-width: 768px) {
+      nav { padding: var(--spacing-md) var(--spacing-lg); }
+      .nav-menu { display: flex; }
+      .nav-toggle { display: none; }
+      .nav-menu.active {
+        position: static;
+        flex-direction: row;
+        background: none;
+        padding: 0;
+        border: none;
+        gap: var(--spacing-lg);
+      }
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary { background-color: var(--primary); color: white; }
+    .btn-primary:hover {
+      background-color: #3047c9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(65,105,225,0.3);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:hover { background-color: var(--primary); color: white; }
+
+    /* ── Sections ── */
+    section { padding: var(--spacing-xl) var(--spacing-sm); }
+
+    section h1, section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      color: var(--text-dark);
+    }
+
+    section h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--spacing-lg);
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    .bg-light { background-color: var(--bg-light); }
+
+    @media (min-width: 768px) {
+      section { padding: var(--spacing-xl) var(--spacing-lg); }
+      section h1, section h2 { font-size: 44px; }
+    }
+
+    /* ── Footer ── */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      padding: var(--spacing-lg) var(--spacing-sm);
+      text-align: center;
+    }
+
+    footer p { margin-bottom: var(--spacing-sm); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-md);
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      color: white;
+      border-color: var(--primary);
+      background-color: var(--primary);
+    }
+
+    .footer-copyright {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    @media (min-width: 768px) {
+      footer { padding: var(--spacing-xl) var(--spacing-lg); }
+    }
+
+    /* ═══════════════════════════════════
+       HOME PAGE
+    ═══════════════════════════════════ */
+
+    .hero {
+      background: linear-gradient(135deg, rgba(65,105,225,0.05) 0%, rgba(139,125,87,0.05) 100%);
+      padding: 60px 16px;
+      display: flex;
+      align-items: center;
+      min-height: 600px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+      text-align: center;
+    }
+
+    .hero-greeting {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .hero-brand-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #4169E1, #8B7D57);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.85;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .hero-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(65,105,225,0.1);
+      z-index: 0;
+    }
+
+    .hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -24px; left: -24px;
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(139,125,87,0.12);
+      z-index: 0;
+    }
+
+    .image-frame-border {
+      position: relative;
+      z-index: 1;
+      padding: 3px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #4169E1 0%, #8B7D57 100%);
+      box-shadow: 0 24px 64px rgba(65,105,225,0.22);
+    }
+
+    .image-frame {
+      width: 260px;
+      height: 320px;
+      border-radius: 17px;
+      background: linear-gradient(160deg, #eef2ff 0%, #f8f5ef 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .image-frame-avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(65,105,225,0.18), rgba(139,125,87,0.18));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin-bottom: 4px;
+    }
+
+    .image-frame-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .image-frame-title { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+    .image-frame-pill {
+      background: rgba(65,105,225,0.12);
+      color: var(--primary);
+      padding: 4px 14px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      .hero { padding: 80px 40px; min-height: 700px; }
+      .hero-inner { flex-direction: row; justify-content: space-between; text-align: left; gap: 60px; }
+      .hero-text { flex: 1; }
+      .hero h1 { font-size: 52px; text-align: left; }
+      .hero-tagline { font-size: 21px; }
+      .hero-desc { margin: 0 0 36px; font-size: 16px; max-width: 100%; }
+      .cta-group { justify-content: flex-start; flex-direction: row; }
+      .image-frame { width: 300px; height: 360px; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 56px; }
+      .image-frame { width: 320px; height: 380px; }
+      .image-frame-avatar { width: 110px; height: 110px; font-size: 56px; }
+    }
+
+    /* Industries */
+    .industries-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .industry-tag {
+      background-color: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .industry-tag:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background-color: rgba(65,105,225,0.05);
+    }
+
+    /* ═══════════════════════════════════
+       SERVICE CARDS (Home + Services page)
+    ═══════════════════════════════════ */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background-color: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 12px 24px rgba(65,105,225,0.12);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      background-color: rgba(65,105,225,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .service-card h3 { margin-bottom: 16px; }
+    .service-card p { color: var(--text-light); font-size: 14px; line-height: 1.7; }
+
+    @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ═══════════════════════════════════
+       SERVICES PAGE (detailed layout)
+    ═══════════════════════════════════ */
+
+    .services-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .service-detail-card {
+      background-color: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .service-detail-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 12px 24px rgba(65,105,225,0.12);
+      transform: translateY(-4px);
+    }
+
+    .service-detail-icon {
+      width: 64px; height: 64px;
+      background-color: rgba(65,105,225,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+
+    .service-detail-card h3 { font-size: 22px; margin-bottom: 16px; }
+    .service-detail-card p { color: var(--text-light); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .service-features li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .service-detail-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .service-detail-card:nth-child(even) { direction: rtl; }
+      .service-detail-card:nth-child(even) > * { direction: ltr; }
+
+      .service-detail-icon { width: 80px; height: 80px; font-size: 44px; }
+    }
+
+    /* ═══════════════════════════════════
+       PORTFOLIO PAGE
+    ═══════════════════════════════════ */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .case-study {
+      background-color: var(--bg-white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .case-study:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    .case-study-image {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #4169E1 0%, #8B7D57 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .case-study-content { padding: 24px; }
+    .case-study h3 { margin-bottom: 16px; font-size: 18px; }
+
+    .case-study-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: rgba(65,105,225,0.1);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .case-study p { color: var(--text-light); font-size: 14px; margin-bottom: 24px; line-height: 1.7; }
+
+    .case-study-result {
+      background-color: rgba(65,105,225,0.05);
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+
+    .case-study-result strong { color: var(--primary); }
+
+    .case-study-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-item { font-size: 13px; }
+    .detail-label { color: var(--text-light); font-weight: 600; margin-bottom: 4px; }
+    .detail-value { color: var(--primary); font-weight: 700; }
+
+    @media (min-width: 768px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .case-study-image { height: 280px; }
+    }
+
+    /* ═══════════════════════════════════
+       ABOUT PAGE
+    ═══════════════════════════════════ */
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, rgba(65,105,225,0.1) 0%, rgba(139,125,87,0.1) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .about-text h2 { text-align: left; margin-bottom: 24px; font-size: 32px; }
+    .about-text p { margin-bottom: 24px; color: var(--text-light); line-height: 1.8; font-size: 15px; }
+
+    .expertise-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .expertise-item { display: flex; align-items: flex-start; gap: 12px; }
+
+    .expertise-item::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .expertise-item span { font-size: 14px; color: var(--text-dark); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 48px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .stat-label { color: var(--text-light); font-size: 14px; font-weight: 500; }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .value-item {
+      padding: 32px;
+      background-color: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .value-item:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 16px rgba(65,105,225,0.1);
+    }
+
+    .value-icon { font-size: 36px; margin-bottom: 16px; }
+    .value-item h3 { font-size: 18px; margin-bottom: 12px; text-align: left; }
+    .value-item p { color: var(--text-light); font-size: 14px; line-height: 1.7; margin: 0; }
+
+    @media (min-width: 768px) {
+      .about-content { grid-template-columns: 1fr 1fr; }
+      .about-image { height: 400px; }
+      .about-text h2 { font-size: 36px; }
+      .expertise-list { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+      .values-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ═══════════════════════════════════
+       PRICING PAGE
+    ═══════════════════════════════════ */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pricing-card {
+      background-color: var(--bg-white);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      transform: scale(1.02);
+      box-shadow: 0 16px 32px rgba(65,105,225,0.15);
+    }
+
+    .pricing-card.featured::before {
+      content: "POPULAR";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pricing-card h3 { font-size: 22px; margin-bottom: 16px; text-align: center; }
+    .pricing-amount { font-size: 42px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .pricing-period { color: var(--text-light); font-size: 14px; margin-bottom: 32px; }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      text-align: left;
+      padding: 0;
+    }
+
+    .pricing-features li {
+      padding: 12px 0;
+      color: var(--text-light);
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-features li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-card .btn { width: 100%; box-sizing: border-box; }
+
+    @media (min-width: 768px) {
+      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+      .pricing-card.featured { grid-column: 1 / -1; max-width: 450px; margin: 0 auto; }
+    }
+
+    /* FAQ */
+    .faq-container { max-width: 800px; margin: 40px auto 0; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 12px 0;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover { color: var(--primary); }
+
+    .faq-toggle { font-size: 20px; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-toggle.open { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .faq-answer.open { max-height: 500px; padding: 24px 0; }
+
+    /* ═══════════════════════════════════
+       CONTACT PAGE
+    ═══════════════════════════════════ */
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      max-width: 900px;
+      margin: 40px auto 0;
+    }
+
+    .contact-form {
+      background-color: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+    }
+
+    .form-group { margin-bottom: 24px; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(65,105,225,0.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+    @media (min-width: 768px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .contact-content { grid-template-columns: 1fr 1fr; }
+    }
+
+    .contact-info { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+    .contact-item { display: flex; gap: 24px; }
+
+    .contact-icon {
+      width: 48px; height: 48px;
+      background-color: rgba(65,105,225,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .contact-details h3 { font-size: 16px; margin-bottom: 8px; text-align: left; }
+    .contact-details p { color: var(--text-light); font-size: 14px; margin: 0; }
+
+    .contact-details a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-details a:hover { color: #3047c9; }
+
+    .form-success {
+      display: none;
+      background-color: rgba(31,138,91,0.1);
+      border: 1px solid #1F8A5B;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      color: #1F8A5B;
+      font-weight: 500;
+    }
+
+    .form-success.show { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <a href="#home" class="nav-logo"><img src="logo.png" alt="temitee" class="nav-logo-img"></a>
+  <button class="nav-toggle" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HOME PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-home">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-greeting">Hi, I'm</div>
+        <h1>Alimi Henry Temitope</h1>
+        <span class="hero-brand-badge">temitee</span>
+        <div class="hero-tagline">Digital Growth Strategist &amp; Web Developer</div>
+        <p class="hero-desc">I partner with businesses across every industry — e-commerce, real estate, healthcare, hospitality, tech startups, and beyond. Whatever your niche, I deliver the strategy, execution, and results to grow your online presence.</p>
+        <div class="cta-group">
+          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="image-frame-border">
+          <div class="image-frame">
+            <div class="image-frame-avatar">👤</div>
+            <div class="image-frame-name">Alimi Henry Temitope</div>
+            <div class="image-frame-title">Digital Growth Strategist<br>&amp; Web Developer</div>
+            <div class="image-frame-pill">temitee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h2>Industries I Serve</h2>
+    <p class="section-intro">No industry too niche, no challenge too complex — I work with businesses at every stage across every sector</p>
+    <div class="industries-grid">
+      <div class="industry-tag">🛍️ E-Commerce</div>
+      <div class="industry-tag">🏠 Real Estate</div>
+      <div class="industry-tag">🏥 Healthcare</div>
+      <div class="industry-tag">🍽️ Hospitality</div>
+      <div class="industry-tag">💼 Professional Services</div>
+      <div class="industry-tag">🎓 Education</div>
+      <div class="industry-tag">💰 Finance</div>
+      <div class="industry-tag">🏗️ Construction</div>
+      <div class="industry-tag">💻 Tech Startups</div>
+      <div class="industry-tag">🛒 Retail</div>
+      <div class="industry-tag">🏋️ Fitness &amp; Wellness</div>
+      <div class="industry-tag">✈️ Travel &amp; Tourism</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Core Services</h2>
+    <p class="section-intro">Full-spectrum digital solutions for any business, any industry, any goal</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Website Design & Development</h3>
+        <p>Custom, responsive websites built to convert visitors into customers. Fast, beautiful, and user-friendly for any industry.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Search Engine Optimization</h3>
+        <p>Increase organic visibility with strategic SEO tailored to your market. On-page optimization and quality backlink building.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Search Engine Marketing</h3>
+        <p>Immediate visibility through paid search campaigns. Strategic Google Ads management for maximum ROI across all sectors.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💰</div>
+        <h3>Google Ads Management</h3>
+        <p>Expert campaigns across Search, Display, and Shopping. Optimized for maximum returns no matter your business type.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Social Media Marketing</h3>
+        <p>Strategic campaigns that build community and drive growth. Content creation, management, and paid social for any audience.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✉️</div>
+        <h3>Email Marketing & Marketplace Optimization</h3>
+        <p>Build lasting customer relationships through targeted campaigns. Optimize product listings to dominate any marketplace.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#services" class="btn btn-primary">View All Services</a>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ═══════════════════════════════════
+     SERVICES PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-services">
+
+  <section>
+    <h1>My Services</h1>
+    <p class="section-intro">Comprehensive digital solutions designed to grow your business and maximize your ROI</p>
+  </section>
+
+  <section>
+    <div class="services-detail-grid">
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">🌐</div>
+          <h3>Website Design & Development</h3>
+          <p>I create custom, responsive websites built to convert visitors into customers. Every site I design is fast-loading, mobile-optimized, and focused on user experience.</p>
+          <ul class="service-features">
+            <li>Responsive design for all devices</li>
+            <li>Fast page load optimization</li>
+            <li>SEO-friendly structure</li>
+            <li>CMS integration (WordPress, Shopify, etc.)</li>
+            <li>E-commerce capabilities</li>
+            <li>Analytics & conversion tracking setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">🔍</div>
+          <h3>Search Engine Optimization (SEO)</h3>
+          <p>Increase your organic visibility and drive qualified traffic. I take a holistic approach to SEO, optimizing technical elements, content, and off-page factors.</p>
+          <ul class="service-features">
+            <li>Keyword research & strategy</li>
+            <li>On-page optimization</li>
+            <li>Technical SEO audits</li>
+            <li>Content optimization</li>
+            <li>Link building & backlink strategy</li>
+            <li>Monthly performance reports</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">📊</div>
+          <h3>Search Engine Marketing (SEM)</h3>
+          <p>Get immediate visibility through paid search campaigns. I manage every aspect of SEM to maximize clicks, conversions, and ROI from your ad budget.</p>
+          <ul class="service-features">
+            <li>Google Ads account setup & optimization</li>
+            <li>Keyword bidding strategy</li>
+            <li>Ad copy creation & testing</li>
+            <li>Landing page optimization</li>
+            <li>Conversion tracking setup</li>
+            <li>Regular performance analysis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">💰</div>
+          <h3>Google Ads Management</h3>
+          <p>Expert management of your Google Ads campaigns across Search, Display, Shopping, and YouTube. I handle everything to maximize your return on ad spend.</p>
+          <ul class="service-features">
+            <li>Campaign structure & setup</li>
+            <li>Audience targeting & segmentation</li>
+            <li>Bid management & optimization</li>
+            <li>Remarketing strategies</li>
+            <li>Budget allocation & scaling</li>
+            <li>Monthly strategy reviews</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">📱</div>
+          <h3>Social Media Marketing (SMM)</h3>
+          <p>Build an engaged community and drive business results through strategic social media. From content creation to paid campaigns, I handle it all.</p>
+          <ul class="service-features">
+            <li>Strategy & content planning</li>
+            <li>Content creation & curation</li>
+            <li>Community management</li>
+            <li>Paid social campaigns</li>
+            <li>Influencer outreach</li>
+            <li>Performance analytics & reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-detail-card">
+        <div>
+          <div class="service-detail-icon">✉️</div>
+          <h3>Email Marketing & Marketplace Optimization</h3>
+          <p>Build lasting customer relationships through targeted email campaigns. Plus, optimize your product listings across marketplaces for maximum visibility and sales.</p>
+          <ul class="service-features">
+            <li>Email list building & segmentation</li>
+            <li>Campaign design & copywriting</li>
+            <li>Automation workflows</li>
+            <li>A/B testing & optimization</li>
+            <li>Amazon & marketplace optimization</li>
+            <li>Product listing & SEO</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h2>Ready to Get Started?</h2>
+    <p class="section-intro">Let's discuss which services are right for your business goals</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn btn-primary">Contact Me Today</a>
+    </div>
+  </section>
+
+</div><!-- /page-services -->
+
+<!-- ═══════════════════════════════════
+     PORTFOLIO PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-portfolio">
+
+  <section>
+    <h1>Portfolio</h1>
+    <p class="section-intro">Recent projects showcasing results-driven digital strategies and measurable outcomes</p>
+  </section>
+
+  <section class="bg-light">
+    <div class="portfolio-grid">
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>E-Commerce Growth Campaign</h3>
+          <div class="case-study-meta">
+            <span class="tag">Google Ads</span><span class="tag">SEM</span><span class="tag">E-Commerce</span>
+          </div>
+          <p>Managed a comprehensive SEM campaign for an online retailer. Optimized product feed, improved ad copy, and implemented advanced audience targeting across Google Shopping and Search campaigns.</p>
+          <div class="case-study-result"><strong>Result:</strong> 150% increase in online sales within 4 months</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">4 months</div></div>
+            <div class="detail-item"><div class="detail-label">ROI</div><div class="detail-value">5.2x</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>Local SEO & Website Redesign</h3>
+          <div class="case-study-meta">
+            <span class="tag">SEO</span><span class="tag">Web Design</span><span class="tag">Local</span>
+          </div>
+          <p>Redesigned website with local SEO optimization, improved Google Business Profile, and implemented schema markup. Focused on location-based keywords for a service-based plumbing business.</p>
+          <div class="case-study-result"><strong>Result:</strong> 3x increase in local search visibility and qualified leads</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">3 months</div></div>
+            <div class="detail-item"><div class="detail-label">Lead Growth</div><div class="detail-value">+200%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>Social Media Growth Strategy</h3>
+          <div class="case-study-meta">
+            <span class="tag">SMM</span><span class="tag">Content</span><span class="tag">Engagement</span>
+          </div>
+          <p>Developed and executed a 6-month social media strategy with consistent content calendars, community engagement, and paid campaigns across Instagram, Facebook, and LinkedIn.</p>
+          <div class="case-study-result"><strong>Result:</strong> 200% follower growth with 35% engagement rate increase</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">6 months</div></div>
+            <div class="detail-item"><div class="detail-label">Followers</div><div class="detail-value">+12K</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>Email Marketing & Retention</h3>
+          <div class="case-study-meta">
+            <span class="tag">Email</span><span class="tag">Retention</span><span class="tag">Revenue</span>
+          </div>
+          <p>Built segmented email campaigns with personalized messaging and automated workflows. Implemented abandoned cart recovery, loyalty programs, and behavioral triggers.</p>
+          <div class="case-study-result"><strong>Result:</strong> 45% improvement in email ROI and recurring revenue</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">Ongoing</div></div>
+            <div class="detail-item"><div class="detail-label">LTV Growth</div><div class="detail-value">+35%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>Website Development & Launch</h3>
+          <div class="case-study-meta">
+            <span class="tag">Web Design</span><span class="tag">Development</span><span class="tag">E-Commerce</span>
+          </div>
+          <p>Designed and developed a complete e-commerce website from scratch with custom features, payment integration, and inventory management. Fully responsive for mobile and desktop.</p>
+          <div class="case-study-result"><strong>Result:</strong> Successful launch with 2.5% conversion rate in first month</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">8 weeks</div></div>
+            <div class="detail-item"><div class="detail-label">Conv. Rate</div><div class="detail-value">2.5%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-study-image">Professional Project Showcase</div>
+        <div class="case-study-content">
+          <h3>Marketplace Optimization</h3>
+          <div class="case-study-meta">
+            <span class="tag">Amazon</span><span class="tag">Marketplace</span><span class="tag">Optimization</span>
+          </div>
+          <p>Optimized product listings across Amazon and other marketplaces. Enhanced titles, descriptions, keywords, and images to increase visibility and improve search ranking.</p>
+          <div class="case-study-result"><strong>Result:</strong> 180% increase in marketplace sales within 2 months</div>
+          <div class="case-study-details">
+            <div class="detail-item"><div class="detail-label">Timeline</div><div class="detail-value">2 months</div></div>
+            <div class="detail-item"><div class="detail-label">Sales Growth</div><div class="detail-value">+180%</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Impressed with These Results?</h2>
+    <p class="section-intro">Let's create a similar success story for your business</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn btn-primary">Start Your Project</a>
+    </div>
+  </section>
+
+</div><!-- /page-portfolio -->
+
+<!-- ═══════════════════════════════════
+     ABOUT PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <section>
+    <h1>About Me</h1>
+    <p class="section-intro">Digital strategist helping businesses across all industries achieve sustainable growth</p>
+  </section>
+
+  <section>
+    <div class="about-content">
+      <div class="about-image">Professional Headshot Placeholder</div>
+      <div class="about-text">
+        <h2>Alimi Henry Temitope</h2>
+        <p>I'm a digital marketing strategist and web developer with a passion for helping businesses across every industry grow their online presence. With expertise spanning SEO, SEM, social media, and web development, I take a holistic approach to digital growth.</p>
+        <p>I've worked with businesses across diverse sectors — e-commerce, real estate, healthcare, hospitality, finance, and more. My approach is always data-driven: I set clear metrics, track everything, and continuously optimize to deliver measurable results.</p>
+        <p>My mission is simple: to deliver transparent, results-driven strategies with technical excellence. Whether you're launching a new venture or scaling an established business, I'm here to help you achieve your digital goals.</p>
+        <h3 style="margin-top:32px;text-align:left;font-size:20px;">Core Expertise</h3>
+        <div class="expertise-list">
+          <div class="expertise-item"><span>Technical SEO & Content Strategy</span></div>
+          <div class="expertise-item"><span>Google Ads & SEM Optimization</span></div>
+          <div class="expertise-item"><span>Social Media Strategy & Management</span></div>
+          <div class="expertise-item"><span>Responsive Web Design & Development</span></div>
+          <div class="expertise-item"><span>Email Marketing Automation</span></div>
+          <div class="expertise-item"><span>E-commerce & Marketplace Optimization</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h2>By The Numbers</h2>
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Projects Completed</div></div>
+      <div class="stat-item"><div class="stat-number">$5M+</div><div class="stat-label">Client Revenue Generated</div></div>
+      <div class="stat-item"><div class="stat-number">95%</div><div class="stat-label">Client Satisfaction</div></div>
+      <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Years Experience</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>My Values</h2>
+    <p class="section-intro">What I believe in and how I work</p>
+    <div class="values-grid">
+      <div class="value-item"><div class="value-icon">📊</div><h3>Data-Driven</h3><p>Every decision is backed by data. I track metrics, analyze results, and optimize continuously based on what the numbers tell me.</p></div>
+      <div class="value-item"><div class="value-icon">🎯</div><h3>Results-Focused</h3><p>Your success is my success. I'm focused on delivering measurable outcomes that impact your bottom line, not vanity metrics.</p></div>
+      <div class="value-item"><div class="value-icon">🤝</div><h3>Transparent</h3><p>No fluff, no jargon. I explain what I'm doing, why I'm doing it, and how it impacts your business in clear, simple terms.</p></div>
+      <div class="value-item"><div class="value-icon">🚀</div><h3>Strategic</h3><p>Short-term wins are great, but I think long-term. I build sustainable strategies that compound over time and create lasting value.</p></div>
+      <div class="value-item"><div class="value-icon">💡</div><h3>Innovative</h3><p>Digital marketing evolves constantly. I stay current with trends, test new tactics, and find creative ways to gain competitive advantages.</p></div>
+      <div class="value-item"><div class="value-icon">⚙️</div><h3>Detail-Oriented</h3><p>Success is in the details. From technical SEO to ad optimization, I obsess over small improvements that add up to big results.</p></div>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h2>Let's Work Together</h2>
+    <p class="section-intro">Ready to grow your business? I'm here to help</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+    </div>
+  </section>
+
+</div><!-- /page-about -->
+
+<!-- ═══════════════════════════════════
+     PRICING PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-pricing">
+
+  <section>
+    <h1>Pricing</h1>
+    <p class="section-intro">Flexible, transparent pricing for businesses at every stage</p>
+  </section>
+
+  <section class="bg-light">
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="pricing-amount">$500</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>1 Digital Marketing Channel</li>
+          <li>Monthly Strategy & Reports</li>
+          <li>Basic Campaign Setup</li>
+          <li>Email Support</li>
+          <li>Up to 5 hours/month</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3>Professional</h3>
+        <div class="pricing-amount">$1,500</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>Multiple Marketing Channels</li>
+          <li>Website Design & Development</li>
+          <li>Advanced Campaign Optimization</li>
+          <li>Bi-weekly Check-ins</li>
+          <li>Quarterly Performance Reviews</li>
+          <li>Priority Support</li>
+          <li>Up to 40 hours/month</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <div class="pricing-amount">Custom</div>
+        <div class="pricing-period">tailored to your needs</div>
+        <ul class="pricing-features">
+          <li>Complete Digital Strategy</li>
+          <li>Full-Service Implementation</li>
+          <li>Dedicated Account Manager</li>
+          <li>Weekly Strategic Meetings</li>
+          <li>Advanced Analytics & Reporting</li>
+          <li>24/7 Priority Support</li>
+          <li>Unlimited Hours</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Contact for Quote</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What's Included</h2>
+    <div style="max-width:900px;margin:40px auto 0;">
+      <h3 style="text-align:left;color:var(--primary);font-size:18px;">All Plans Include</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;border-bottom:1px solid var(--border);"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Dedicated strategy & planning</li>
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;border-bottom:1px solid var(--border);"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Campaign setup & implementation</li>
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;border-bottom:1px solid var(--border);"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Monthly performance reports</li>
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;border-bottom:1px solid var(--border);"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Data-driven optimization</li>
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;border-bottom:1px solid var(--border);"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Communication & support</li>
+        <li style="padding:12px 0;color:var(--text-light);display:flex;align-items:center;"><span style="color:var(--primary);font-weight:700;margin-right:12px;">✓</span> Strategy adjustments</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h2>Pricing FAQ</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>Do you offer custom packages?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">Absolutely! Every business is unique. I'm happy to create a custom package tailored to your specific goals, budget, and timeline. The pricing tiers above are starting points. Contact me to discuss your needs and get a personalized proposal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>What payment terms do you offer?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">Most packages are billed monthly via invoice or your preferred payment method. For longer-term commitments, I can offer discounts. We can also structure payments to align with your business cycle.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>Can I upgrade or downgrade my plan?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">Yes! Plans are flexible. If your needs change, you can upgrade, downgrade, or adjust your package. Changes take effect the following month, and we'll adjust pricing accordingly.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>What's your contract term?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">I typically recommend a 3-month minimum engagement to see meaningful results. However, I'm flexible and we can discuss different arrangements based on your situation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>Do you offer project-based pricing?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">Yes! If you have a specific project like a website redesign or one-time marketing campaign, I can provide project-based pricing. We'd define scope, timeline, and deliverables upfront.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>How do you measure success and ROI?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">I establish clear KPIs upfront aligned with your business goals — traffic, leads, sales, or engagement. I provide detailed monthly reports with transparent metrics, insights, and recommendations.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ready to Grow?</h2>
+    <p class="section-intro">Let's discuss the right plan for your business and goals</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+    </div>
+  </section>
+
+</div><!-- /page-pricing -->
+
+<!-- ═══════════════════════════════════
+     CONTACT PAGE
+═══════════════════════════════════ -->
+<div class="page" id="page-contact">
+
+  <section>
+    <h1>Get In Touch</h1>
+    <p class="section-intro">Have a project in mind? Let's discuss how I can help grow your business</p>
+  </section>
+
+  <section class="bg-light">
+    <div class="contact-content">
+
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-success" id="formSuccess">
+          ✓ Thank you! I've received your message and will get back to you within 24 hours.
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company (Optional)</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (Optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Interested In *</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="web-design">Website Design & Development</option>
+            <option value="seo">Search Engine Optimization (SEO)</option>
+            <option value="sem">Search Engine Marketing (SEM)</option>
+            <option value="google-ads">Google Ads Management</option>
+            <option value="smm">Social Media Marketing (SMM)</option>
+            <option value="email">Email Marketing</option>
+            <option value="marketplace">Marketplace Optimization</option>
+            <option value="other">Other / Custom Project</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget">Budget Range (Optional)</label>
+          <select id="budget" name="budget">
+            <option value="">Select a range</option>
+            <option value="under-1k">Under $1,000</option>
+            <option value="1k-5k">$1,000 - $5,000</option>
+            <option value="5k-10k">$5,000 - $10,000</option>
+            <option value="10k-25k">$10,000 - $25,000</option>
+            <option value="25k+">$25,000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Me About Your Project *</label>
+          <textarea id="message" name="message" required placeholder="What are you looking to achieve? What's your timeline? Any specific challenges?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <h3 style="text-align:left;margin-bottom:24px;">Quick Contact</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <p><a href="mailto:hello@temitee.com">hello@temitee.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h3>Phone</h3>
+            <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div class="contact-details">
+            <h3>Response Time</h3>
+            <p>24 hours (weekdays)<br>48 hours (weekends)</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🔗</div>
+          <div class="contact-details">
+            <h3>Social Media</h3>
+            <p>
+              <a href="https://www.instagram.com/alimihenry227/" target="_blank" rel="noopener noreferrer" style="margin-right:12px;">Instagram</a>
+              <a href="https://www.tiktok.com/@alimihenry" target="_blank" rel="noopener noreferrer" style="margin-right:12px;">TikTok</a>
+              <a href="https://www.facebook.com/profile.php?id=61587132467551" target="_blank" rel="noopener noreferrer" style="margin-right:12px;">Facebook</a>
+              <a href="https://x.com/alimi_henry12" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h3>Availability</h3>
+            <p>Available for projects<br>starting immediately</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Before You Reach Out</h2>
+    <p class="section-intro">Quick answers to common questions</p>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>What's your typical process?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">I start with a discovery call to understand your goals, challenges, and current situation. Then I develop a customized strategy, implement it, and continuously optimize based on data and results.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>How long before I see results?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">It depends on the service. Paid campaigns (Google Ads, SEM) can show results in weeks. SEO typically takes 3-6 months for meaningful improvements. Website projects take 4-8 weeks.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>Do you work with my existing tools/platforms?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">Absolutely! I work with WordPress, Shopify, Google Ads, Facebook Ads, HubSpot, Mailchimp, and virtually any platform you're using. I integrate with your existing tech stack.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)"><span>What if I'm not sure what I need?</span><span class="faq-toggle">▼</span></button>
+        <div class="faq-answer">That's perfectly fine! I offer a free consultation where we discuss your goals and I recommend the best services for your situation. No obligation — just honest advice.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-contact -->
+
+<!-- ═══ FOOTER (shared across all pages) ═══ -->
+<footer>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/alimihenry227/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.tiktok.com/@alimihenry" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a href="https://www.facebook.com/profile.php?id=61587132467551" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://x.com/alimi_henry12" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+  </div>
+  <p>© 2026 Alimi Henry Temitope. All rights reserved.</p>
+  <div class="footer-copyright">
+    <p>Crafted with care to help your business grow.</p>
+  </div>
+</footer>
+
+<script>
+  const PAGES = ['home','services','portfolio','about','pricing','contact'];
+  const TITLES = {
+    home:      'Alimi Henry Temitope — Digital Growth Strategist | temitee',
+    services:  'Services | temitee',
+    portfolio: 'Portfolio | temitee',
+    about:     'About | temitee',
+    pricing:   'Pricing | temitee',
+    contact:   'Contact | temitee'
+  };
+
+  function showPage(id) {
+    const pageId = PAGES.includes(id) ? id : 'home';
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + pageId).classList.add('active');
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + pageId);
+    });
+    document.title = TITLES[pageId];
+    window.scrollTo(0, 0);
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+  }
+
+  function handleHash() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    showPage(hash);
+  }
+
+  window.addEventListener('hashchange', handleHash);
+  window.addEventListener('load', handleHash);
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const navMenu   = document.getElementById('navMenu');
+  navToggle.addEventListener('click', function() {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  // FAQ accordion
+  function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const toggle = button.querySelector('.faq-toggle');
+    document.querySelectorAll('.faq-answer.open').forEach(open => {
+      if (open !== answer) {
+        open.classList.remove('open');
+        open.previousElementSibling.querySelector('.faq-toggle').classList.remove('open');
+      }
+    });
+    answer.classList.toggle('open');
+    toggle.classList.toggle('open');
+  }
+
+  // Contact form
+  function handleSubmit(event) {
+    event.preventDefault();
+    document.getElementById('formSuccess').classList.add('show');
+    event.target.reset();
+    setTimeout(() => document.getElementById('formSuccess').classList.remove('show'), 5000);
+  }
+</script>
+</body>
+</html>
